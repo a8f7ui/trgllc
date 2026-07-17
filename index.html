@@ -1,85 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Technology Research Group | Applied Technology Research & Evaluation</title>
-<meta name="description" content="Technology Research Group is a Milwaukee, Wisconsin-based organization focused on applied technology research, field testing, evaluation, and evidence-based recommendations.">
-<style>
-html{scroll-behavior:smooth}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#2d2d2d;background:#fafafa;line-height:1.7}
-.container{width:min(1100px,92%);margin:auto}
-header{background:#fff;border-bottom:1px solid #e6e6e6;position:sticky;top:0;z-index:10}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
-.logo{display:flex;align-items:center;gap:14px}
-.logo-mark{color:#17375e;font-size:34px;line-height:1}
-.logo-text{display:flex;flex-direction:column}
-.logo-title{font-size:1.25rem;font-weight:700;color:#17375e}
-.logo-subtitle{font-size:.72rem;text-transform:uppercase;letter-spacing:1.6px;color:#777}
-nav ul{display:flex;list-style:none;gap:30px}
-nav a{text-decoration:none;color:#555;font-weight:500}
-nav a:hover{color:#17375e}
-.hero{position:relative;color:#fff;padding:120px 0;background:linear-gradient(rgba(23,55,94,.82),rgba(23,55,94,.82)),url("/assets/header1.jpg") center/cover no-repeat}
-.hero h1{font-size:3.2rem;line-height:1.1;margin-bottom:20px;max-width:700px}
-.hero p{max-width:700px;font-size:1.15rem;opacity:.96}
-.button{display:inline-block;margin-top:35px;background:#fff;color:#17375e;text-decoration:none;padding:14px 28px;border-radius:4px;font-weight:600;transition:.2s}
-.button:hover{background:#f2f2f2;transform:translateY(-2px)}
-section{padding:75px 0}
-section:nth-child(even){background:#fff}
-h2{font-size:2rem;color:#17375e;margin-bottom:25px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px}
-.card{background:#fff;border:1px solid #e4e4e4;padding:28px;border-radius:8px;transition:.2s}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px}
-.step{text-align:center;padding:25px}.number{width:54px;height:54px;margin:auto;border-radius:50%;background:#17375e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:18px}
-.contact{background:#17375e;color:#fff}.contact a{color:#fff}
-#topBtn{
-    position:fixed;
-    right:24px;
-    bottom:24px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technology Research Group | Applied Technology Research & Evaluation</title>
+  <meta name="description" content="Technology Research Group is a Milwaukee, Wisconsin-based organization focused on applied technology research, field testing, evaluation, and evidence-based recommendations." />
 
-    width:46px;
-    height:46px;
+  <style>
+    :root{
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #0f1f33;
+      --muted: #5a6b7f;
 
-    border-radius:50%;
+      --brand: #17375e;
+      --brand-2: #0f2a4a;
 
-    background:#17375e;
-    color:white;
+      --border: rgba(15,31,51,.10);
+      --shadow: 0 10px 30px rgba(15,31,51,.08);
 
-    text-decoration:none;
+      --radius: 14px;
+      --radius-sm: 10px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+      --container: 1100px;
 
-    font-size:22px;
+      --focus: 0 0 0 4px rgba(23,55,94,.18);
+    }
 
-    box-shadow:0 6px 16px rgba(0,0,0,.2);
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(23,55,94,.10), transparent 60%),
+                  radial-gradient(900px 600px at 85% 0%, rgba(23,55,94,.07), transparent 55%),
+                  var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    transition:.25s;
+    img{ max-width:100%; display:block; }
 
-    opacity:.85;
-}
+    .container{
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
 
-#topBtn:hover{
-    opacity:1;
-    transform:translateY(-3px);
-}
-footer{background:#0d223b;color:#cbd3db;text-align:center;padding:30px;font-size:.9rem}
-footer a{color:#cbd3db;text-decoration:none} footer a:hover{text-decoration:underline}
-@media(max-width:800px){nav{flex-direction:column;gap:18px}nav ul{gap:16px;flex-wrap:wrap;justify-content:center}.hero{padding:80px 0}.hero h1{font-size:2.2rem}.hero p{font-size:1rem}.logo{text-align:center}section{padding:55px 0}}
-</style></head>
-<body><header><div class="container"><nav><div class="logo"><span class="logo-mark">&#9650;</span><div class="logo-text"><span class="logo-title">Technology Research Group</span><span class="logo-subtitle">Applied Research &amp; Evaluation</span></div></div><ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#approach">Approach</a></li><li><a href="#contact">Contact</a></li></ul></nav></div></header>
-<section class="hero"><div class="container"><h1>Applied Technology Research.<br>Practical Evaluation.</h1><p>Technology Research Group helps organizations better understand emerging technologies through structured research, practical field evaluation, and evidence-based analysis that supports informed decision making.</p><a class="button" href="#about">Learn More</a></div></section>
-<section id="about"><div class="container"><h2>About Technology Research Group</h2><p>Technology Research Group is a professional organization dedicated to advancing practical technology through rigorous investigation, field testing, and applied research. The company works with organizations and stakeholders to evaluate emerging solutions, validate performance in real-world conditions, and identify improvements that enhance reliability, efficiency, and outcomes. From early-stage experimentation to structured testing and technical studies, Technology Research Group helps clients make informed decisions backed by clear, evidence-based findings and actionable recommendations.</p><br><p>Based in Milwaukee, Wisconsin, our work emphasizes objective evaluation, thoughtful analysis, and practical insight. We believe that careful research and measurable results provide a stronger foundation for technology decisions than assumptions or speculation.</p></div></section>
-<section id="services"><div class="container"><h2>Core Areas of Focus</h2><div class="grid"><div class="card"><h3>Technology Evaluation</h3><p>Independent assessment of developing technologies to better understand practical capabilities, limitations, and readiness for operational environments.</p></div><div class="card"><h3>Field Testing</h3><p>Structured observation and validation in real-world conditions to produce meaningful performance data and objective findings.</p></div><div class="card"><h3>Applied Research</h3><p>Research activities focused on practical implementation, measurable outcomes, and informed decision support.</p></div><div class="card"><h3>Technical Reporting</h3><p>Clear documentation, evidence-based conclusions, and actionable recommendations presented in a professional format.</p></div></div></div></section>
-<section id="approach"><div class="container"><h2>Our Approach</h2><div class="process"><div class="step"><div class="number">1</div><h3>Research</h3><p>Identify questions, objectives, and evaluation criteria.</p></div><div class="step"><div class="number">2</div><h3>Evaluate</h3><p>Conduct structured testing and practical observation.</p></div><div class="step"><div class="number">3</div><h3>Analyze</h3><p>Review findings using objective, evidence-based methods.</p></div><div class="step"><div class="number">4</div><h3>Report</h3><p>Deliver concise recommendations and documented conclusions.</p></div></div></div></section>
-<section><div class="container"><h2>Why Organizations Work With Us</h2><div class="grid"><div class="card"><h3>Objective Perspective</h3><p>Our evaluations emphasize impartial observation and practical findings.</p></div><div class="card"><h3>Evidence-Based Results</h3><p>Recommendations are grounded in documented research and structured evaluation.</p></div><div class="card"><h3>Professional Standards</h3><p>Every engagement is approached with consistency, discretion, and attention to detail.</p></div></div></div></section>
-<section id="contact" class="contact"><div class="container"><h2>Contact</h2><p>Technology Research Group<br>Milwaukee, Wisconsin</p><br><p>General inquiries: <a id="emailLink" href="#">Loading...</a></p></div></section>
-<footer><p>Technology Research Group &copy; <span id="year"></span>. All rights reserved.</p><p style="margin-top:10px;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p></footer>
-<script>document.getElementById("year").textContent=new Date().getFullYear();(()=>{const e=['technology','research','group'].join('')+'@'+['proton','me'].join('.');const l=document.getElementById('emailLink');l.textContent=e;l.href='mailto:'+e;})();</script>
-<a id="topBtn" href="#" title="Back to top">
+    /* Header / Nav (mobile-first) */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+
+    .logo{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+
+    .logo-mark{
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(23,55,94,.98), rgba(23,55,94,.80));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      box-shadow: 0 10px 24px rgba(23,55,94,.22);
+      transform: translateZ(0);
+    }
+
+    .logo-title{
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--brand);
+      line-height: 1.1;
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+    }
+
+    .logo-subtitle{
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-size: 0.70rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .nav-links{
+      display: none; /* mobile-first */
+      gap: 18px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a{
+      text-decoration: none;
+      color: rgba(15,31,51,.72);
+      font-weight: 650;
+      padding: 10px 10px;
+      border-radius: 10px;
+      transition: background .15s ease, color .15s ease, transform .15s ease;
+    }
+    .nav-links a:hover{
+      color: var(--brand);
+      background: rgba(23,55,94,.07);
+    }
+    .nav-links a:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    /* Mobile menu button */
+    .menu-btn{
+      appearance: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--brand);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .menu-btn:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    .menu-icon{
+      width: 18px;
+      height: 14px;
+      position: relative;
+      display: inline-block;
+    }
+    .menu-icon span{
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform .18s ease, top .18s ease, opacity .18s ease;
+    }
+    .menu-icon span:nth-child(1){ top: 1px; }
+    .menu-icon span:nth-child(2){ top: 6px; }
+    .menu-icon span:nth-child(3){ top: 11px; }
+
+    /* Mobile drawer */
+    .mobile-drawer{
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .22s ease;
+      border-top: 1px solid var(--border);
+    }
+    .mobile-drawer[data-open="true"]{
+      grid-template-rows: 1fr;
+    }
+    .mobile-drawer-inner{
+      overflow: hidden;
+    }
+    .mobile-drawer nav{
+      padding: 12px 0 18px;
+      display: block;
+    }
+    .mobile-links{
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      padding: 8px 0 0;
+    }
+    .mobile-links a{
+      display: block;
+      text-decoration: none;
+      color: rgba(15,31,51,.78);
+      font-weight: 700;
+      padding: 12px 12px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: rgba(255,255,255,.65);
+      transition: background .15s ease, border-color .15s ease;
+    }
+    .mobile-links a:hover{
+      background: rgba(23,55,94,.07);
+      border-color: rgba(23,55,94,.12);
+      color: var(--brand);
+    }
+    .mobile-links a:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    /* Hero (mobile-first) */
+    .hero{
+      position: relative;
+      color: #fff;
+      overflow: hidden;
+      padding: 64px 0 44px;
+      background: linear-gradient(135deg, rgba(23,55,94,.92), rgba(23,55,94,.80));
+    }
+
+    /* Hero background image layer (separate from overlay for easier debugging/fallback) */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(135deg, rgba(23,55,94,.92) 0%, rgba(23,55,94,.80) 55%, rgba(13,34,59,.72) 100%),
+        url("/assets/header1.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.02); /* reduces any edge seams on some browsers */
+      z-index: 0;
+    }
+
+    /* Optional subtle texture */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 420px at 20% 20%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(700px 360px at 85% 10%, rgba(255,255,255,.08), transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero .container{
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      font-weight: 800;
+      letter-spacing: .01em;
+      color: rgba(255,255,255,.95);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+    .hero-badge .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #fff;
+      opacity: .9;
+      box-shadow: 0 0 0 5px rgba(255,255,255,.14);
+    }
+
+    .hero h1{
+      font-size: clamp(2.0rem, 5vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      max-width: 26ch;
+    }
+
+    .hero p{
+      font-size: 1.05rem;
+      opacity: .96;
+      max-width: 62ch;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,.95);
+    }
+
+    .actions{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 0;
+      background: rgba(255,255,255,.96);
+      color: var(--brand);
+      text-decoration: none;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 850;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      box-shadow: 0 14px 30px rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.35);
+    }
+    .button:hover{
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(0,0,0,.22);
+    }
+    .button:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    .button.secondary{
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.24);
+      color: #fff;
+      box-shadow: none;
+    }
+    .button.secondary:hover{
+      background: rgba(255,255,255,.16);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(0,0,0,.18);
+    }
+
+    /* Sections */
+    section{ padding: 58px 0; }
+    section:nth-child(even){ background: transparent; }
+
+    .section-card{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(15,31,51,.06);
+    }
+
+    h2{
+      font-size: clamp(1.35rem, 3.5vw, 2.05rem);
+      color: var(--brand);
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    p{ color: rgba(15,31,51,.82); }
+
+    /* Grids / Cards */
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: var(--radius-sm);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      box-shadow: 0 8px 18px rgba(15,31,51,.05);
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(15,31,51,.10);
+      border-color: rgba(23,55,94,.18);
+    }
+
+    .card h3{
+      font-size: 1.05rem;
+      color: var(--brand);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .card p{ margin: 0; }
+
+    .process{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .step{
+      text-align: left;
+      padding: 18px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 18px rgba(15,31,51,.05);
+    }
+
+    .step-top{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .number{
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(23,55,94,.98), rgba(23,55,94,.80));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      flex: 0 0 auto;
+      box-shadow: 0 16px 30px rgba(23,55,94,.25);
+    }
+
+    .step h3{
+      color: var(--brand);
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* Contact */
+    .contact .section-card{
+      background: linear-gradient(180deg, rgba(23,55,94,.98), rgba(23,55,94,.92));
+      border-color: rgba(255,255,255,.14);
+      box-shadow: 0 18px 50px rgba(23,55,94,.25);
+    }
+    .contact .section-card h2{ color: #fff; }
+    .contact .section-card p{ color: rgba(255,255,255,.92); }
+    .contact a{
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.6);
+      text-underline-offset: 3px;
+      font-weight: 750;
+    }
+    .contact a:focus-visible{ outline: none; box-shadow: var(--focus); border-radius: 8px; }
+
+    /* Footer */
+    footer{
+      background: #0d223b;
+      color: #cbd3db;
+      text-align: center;
+      padding: 28px 0;
+      font-size: .95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    footer a{
+      color: #cbd3db;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    footer a:hover{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Back to top */
+    #topBtn{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #17375e;
+      color: #fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 22px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.2);
+      text-decoration:none;
+      opacity:.88;
+      transition: opacity .2s ease, transform .2s ease;
+      border: 1px solid rgba(255,255,255,.10);
+      z-index: 40;
+    }
+    #topBtn:hover{
+      opacity:1;
+      transform: translateY(-3px);
+    }
+    #topBtn:focus-visible{ outline: none; box-shadow: var(--focus); }
+
+    /* Responsive enhancements */
+    @media (min-width: 860px){
+      nav{ padding: 18px 0; }
+      .nav-links{ display: flex; }
+      .menu-btn{ display: none; }
+      .mobile-drawer{ display: none; }
+
+      .hero{ padding: 98px 0 64px; }
+      .hero p{ font-size: 1.12rem; }
+
+      .grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .process{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .step{
+        text-align: center;
+      }
+      .step-top{
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      *{ transition: none !important; }
+    }
+  </style>
+
+  <!-- If you want the browser to fetch the hero image sooner (helps perceived load) -->
+  <!-- Change /assets/header1.jpg to a relative path if your site isn't hosted at the domain root. -->
+  <link rel="preload" as="image" href="/assets/header1.jpg" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Primary">
+        <div class="logo" aria-label="Technology Research Group">
+          <span class="logo-mark" aria-hidden="true">▲</span>
+          <div>
+            <div class="logo-title">Technology Research Group</div>
+            <div class="logo-subtitle">Applied Research &amp; Evaluation</div>
+          </div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="menu-icon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          Menu
+        </button>
+      </nav>
+
+      <div class="mobile-drawer" id="mobileDrawer" data-open="false">
+        <div class="mobile-drawer-inner">
+          <nav aria-label="Mobile Primary">
+            <ul class="mobile-links">
+              <li><a href="#about" data-close-menu>About</a></li>
+              <li><a href="#services" data-close-menu>Services</a></li>
+              <li><a href="#approach" data-close-menu>Approach</a></li>
+              <li><a href="#contact" data-close-menu>Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" role="banner">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot" aria-hidden="true"></span>
+        Practical evaluation for emerging technologies
+      </div>
+
+      <h1>Applied Technology Research.<br />Practical Evaluation.</h1>
+
+      <p>
+        Technology Research Group helps organizations better understand emerging technologies through structured research, practical field evaluation, and evidence-based analysis that supports informed decision making.
+      </p>
+
+      <div class="actions">
+        <a class="button" href="#about">
+          Learn More
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="button secondary" href="#contact">
+          Contact
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-card">
+        <h2>About Technology Research Group</h2>
+        <p>
+          Technology Research Group is a professional organization dedicated to advancing practical technology through rigorous investigation, field testing, and applied research.
+          The company works with organizations and stakeholders to evaluate emerging solutions, validate performance in real-world conditions, and identify improvements that enhance reliability, efficiency, and outcomes.
+          From early-stage experimentation to structured testing and technical studies, Technology Research Group helps clients make informed decisions backed by clear, evidence-based findings and actionable recommendations.
+        </p>
+        <br />
+        <p>
+          Based in Milwaukee, Wisconsin, our work emphasizes objective evaluation, thoughtful analysis, and practical insight.
+          We believe that careful research and measurable results provide a stronger foundation for technology decisions than assumptions or speculation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-card">
+        <h2>Core Areas of Focus</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Technology Evaluation</h3>
+            <p>Independent assessment of developing technologies to better understand practical capabilities, limitations, and readiness for operational environments.</p>
+          </div>
+          <div class="card">
+            <h3>Field Testing</h3>
+            <p>Structured observation and validation in real-world conditions to produce meaningful performance data and objective findings.</p>
+          </div>
+          <div class="card">
+            <h3>Applied Research</h3>
+            <p>Research activities focused on practical implementation, measurable outcomes, and informed decision support.</p>
+          </div>
+          <div class="card">
+            <h3>Technical Reporting</h3>
+            <p>Clear documentation, evidence-based conclusions, and actionable recommendations presented in a professional format.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="container">
+      <div class="section-card">
+        <h2>Our Approach</h2>
+        <div class="process">
+          <div class="step">
+            <div class="step-top">
+              <div class="number">1</div>
+              <h3>Research</h3>
+            </div>
+            <p>Identify questions, objectives, and evaluation criteria.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-top">
+              <div class="number">2</div>
+              <h3>Evaluate</h3>
+            </div>
+            <p>Conduct structured testing and practical observation.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-top">
+              <div class="number">3</div>
+              <h3>Analyze</h3>
+            </div>
+            <p>Review findings using objective, evidence-based methods.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-top">
+              <div class="number">4</div>
+              <h3>Report</h3>
+            </div>
+            <p>Deliver concise recommendations and documented conclusions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-card">
+        <h2>Why Organizations Work With Us</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Objective Perspective</h3>
+            <p>Our evaluations emphasize impartial observation and practical findings.</p>
+          </div>
+          <div class="card">
+            <h3>Evidence-Based Results</h3>
+            <p>Recommendations are grounded in documented research and structured evaluation.</p>
+          </div>
+          <div class="card">
+            <h3>Professional Standards</h3>
+            <p>Every engagement is approached with consistency, discretion, and attention to detail.</p>
+          </div>
+          <div class="card">
+            <h3>Actionable Insights</h3>
+            <p>Deliverables are designed to support real decisions, not just documentation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-card">
+        <h2>Contact</h2>
+        <p>Technology Research Group<br />Milwaukee, Wisconsin</p>
+        <br />
+        <p>
+          General inquiries:
+          <a id="emailLink" href="#" aria-label="General inquiries email">Loading...</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Technology Research Group &copy; <span id="year"></span>. All rights reserved.</p>
+    <p style="margin-top:10px;">
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </p>
+  </footer>
+
+  <a id="topBtn" href="#" title="Back to top" aria-label="Back to top">
     ↑
-</a>
-</body></html>
+  </a>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Obfuscated email (keeps your original behavior)
+    (() => {
+      const e = ["technology", "research", "group"].join("") + "@" + ["proton", "me"].join(".");
+      const l = document.getElementById("emailLink");
+      if (!l) return;
+      l.textContent = e;
+      l.href = "mailto:" + e;
+    })();
+
+    // Mobile menu
+    (() => {
+      const btn = document.getElementById("menuBtn");
+      const drawer = document.getElementById("mobileDrawer");
+      if (!btn || !drawer) return;
+
+      const setOpen = (open) => {
+        drawer.dataset.open = String(open);
+        btn.setAttribute("aria-expanded", String(open));
+      };
+
+      btn.addEventListener("click", () => {
+        const open = drawer.dataset.open !== "true";
+        setOpen(open);
+      });
+
+      document.querySelectorAll("[data-close-menu]").forEach(a => {
+        a.addEventListener("click", () => setOpen(false));
+      });
+
+      // Close when clicking outside
+      document.addEventListener("click", (ev) => {
+        if (drawer.dataset.open !== "true") return;
+        const isInside = drawer.contains(ev.target) || btn.contains(ev.target);
+        if (!isInside) setOpen(false);
+      });
+    })();
+  </script>
+</body>
+</html>
