@@ -1,1 +1,430 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology Research Group | Applied Technology Research & Evaluation</title>
+
+<meta name="description" content="Technology Research Group is a Milwaukee, Wisconsin-based organization focused on applied technology research, field testing, evaluation, and evidence-based recommendations.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:#2d2d2d;
+    background:#fafafa;
+    line-height:1.7;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+header{
+    background:white;
+    border-bottom:1px solid #e6e6e6;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    font-size:1.45rem;
+    font-weight:700;
+    letter-spacing:.5px;
+    color:#17375e;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#555;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#17375e;
+}
+
+.hero{
+    background:linear-gradient(135deg,#17375e,#2f5d88);
+    color:white;
+    padding:110px 0;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:700px;
+    font-size:1.15rem;
+    opacity:.95;
+}
+
+.button{
+    display:inline-block;
+    margin-top:35px;
+    background:white;
+    color:#17375e;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:4px;
+    font-weight:600;
+}
+
+section{
+    padding:75px 0;
+}
+
+section:nth-child(even){
+    background:white;
+}
+
+h2{
+    font-size:2rem;
+    color:#17375e;
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:28px;
+}
+
+.card{
+    background:white;
+    border:1px solid #e4e4e4;
+    padding:28px;
+    border-radius:8px;
+}
+
+.card h3{
+    margin-bottom:12px;
+    color:#17375e;
+}
+
+.process{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+}
+
+.step{
+    text-align:center;
+    padding:25px;
+}
+
+.number{
+    width:54px;
+    height:54px;
+    margin:auto;
+    border-radius:50%;
+    background:#17375e;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.contact{
+    background:#17375e;
+    color:white;
+}
+
+.contact a{
+    color:white;
+}
+
+footer{
+    background:#0d223b;
+    color:#cbd3db;
+    text-align:center;
+    padding:30px;
+    font-size:.9rem;
+}
+
+@media(max-width:800px){
+
+.hero h1{
+    font-size:2.3rem;
+}
+
+nav{
+    flex-direction:column;
+    gap:18px;
+}
+
+nav ul{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">Technology Research Group</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#approach">Approach</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>Applied Technology Research.<br>Practical Evaluation.</h1>
+
+<p>
+Technology Research Group helps organizations better understand emerging technologies through structured research, practical field evaluation, and evidence-based analysis that supports informed decision making.
+</p>
+
+<a class="button" href="#about">Learn More</a>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<h2>About Technology Research Group</h2>
+
+<p>
+Technology Research Group is a professional organization dedicated to advancing practical technology through rigorous investigation, field testing, and applied research. The company works with organizations and stakeholders to evaluate emerging solutions, validate performance in real-world conditions, and identify improvements that enhance reliability, efficiency, and outcomes. From early-stage experimentation to structured testing and technical studies, Technology Research Group helps clients make informed decisions backed by clear, evidence-based findings and actionable recommendations.
+</p>
+
+<br>
+
+<p>
+Based in Milwaukee, Wisconsin, our work emphasizes objective evaluation, thoughtful analysis, and practical insight. We believe that careful research and measurable results provide a stronger foundation for technology decisions than assumptions or speculation.
+</p>
+
+</div>
+
+</section>
+
+<section id="services">
+
+<div class="container">
+
+<h2>Core Areas of Focus</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Technology Evaluation</h3>
+<p>
+Independent assessment of developing technologies to better understand practical capabilities, limitations, and readiness for operational environments.
+</p>
+</div>
+
+<div class="card">
+<h3>Field Testing</h3>
+<p>
+Structured observation and validation in real-world conditions to produce meaningful performance data and objective findings.
+</p>
+</div>
+
+<div class="card">
+<h3>Applied Research</h3>
+<p>
+Research activities focused on practical implementation, measurable outcomes, and informed decision support.
+</p>
+</div>
+
+<div class="card">
+<h3>Technical Reporting</h3>
+<p>
+Clear documentation, evidence-based conclusions, and actionable recommendations presented in a professional format.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="approach">
+
+<div class="container">
+
+<h2>Our Approach</h2>
+
+<div class="process">
+
+<div class="step">
+<div class="number">1</div>
+<h3>Research</h3>
+<p>Identify questions, objectives, and evaluation criteria.</p>
+</div>
+
+<div class="step">
+<div class="number">2</div>
+<h3>Evaluate</h3>
+<p>Conduct structured testing and practical observation.</p>
+</div>
+
+<div class="step">
+<div class="number">3</div>
+<h3>Analyze</h3>
+<p>Review findings using objective, evidence-based methods.</p>
+</div>
+
+<div class="step">
+<div class="number">4</div>
+<h3>Report</h3>
+<p>Deliver concise recommendations and documented conclusions.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>Why Organizations Work With Us</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Objective Perspective</h3>
+<p>
+Our evaluations emphasize impartial observation and practical findings.
+</p>
+</div>
+
+<div class="card">
+<h3>Evidence-Based Results</h3>
+<p>
+Recommendations are grounded in documented research and structured evaluation.
+</p>
+</div>
+
+<div class="card">
+<h3>Professional Standards</h3>
+<p>
+Every engagement is approached with consistency, discretion, and attention to detail.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<h2>Contact</h2>
+
+<p>
+Technology Research Group<br>
+Milwaukee, Wisconsin
+</p>
+
+<br>
+
+<p>
+General inquiries:
+<a id="emailLink" href="#">Loading...</a>
+</p>
+
+</div>
+
+</section>
+
+<footer>
+    <p>
+        Technology Research Group &copy;
+        <span id="year"></span>.
+        All rights reserved.
+    </p>
+
+    <p style="margin-top:10px;">
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms of Use</a>
+    </p>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Simple email obfuscation.
+// The address never appears in the HTML source as plain text.
+
+(function(){
+
+const u = [
+'technology',
+'research',
+'group'
+].join('');
+
+const d = [
+'proton',
+'me'
+].join('.');
+
+const email = u + '@' + d;
+
+const link = document.getElementById('emailLink');
+
+link.textContent = email;
+
+link.href = 'mailto:' + email;
+
+})();
+</script>
+
+</body>
+</html>
