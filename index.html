@@ -34,6 +34,38 @@ h2{font-size:2rem;color:#17375e;margin-bottom:25px}
 .process{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px}
 .step{text-align:center;padding:25px}.number{width:54px;height:54px;margin:auto;border-radius:50%;background:#17375e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:18px}
 .contact{background:#17375e;color:#fff}.contact a{color:#fff}
+#topBtn{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    background:#17375e;
+    color:white;
+
+    text-decoration:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.2);
+
+    transition:.25s;
+
+    opacity:.85;
+}
+
+#topBtn:hover{
+    opacity:1;
+    transform:translateY(-3px);
+}
 footer{background:#0d223b;color:#cbd3db;text-align:center;padding:30px;font-size:.9rem}
 footer a{color:#cbd3db;text-decoration:none} footer a:hover{text-decoration:underline}
 @media(max-width:800px){nav{flex-direction:column;gap:18px}nav ul{gap:16px;flex-wrap:wrap;justify-content:center}.hero{padding:80px 0}.hero h1{font-size:2.2rem}.hero p{font-size:1rem}.logo{text-align:center}section{padding:55px 0}}
@@ -47,4 +79,7 @@ footer a{color:#cbd3db;text-decoration:none} footer a:hover{text-decoration:unde
 <section id="contact" class="contact"><div class="container"><h2>Contact</h2><p>Technology Research Group<br>Milwaukee, Wisconsin</p><br><p>General inquiries: <a id="emailLink" href="#">Loading...</a></p></div></section>
 <footer><p>Technology Research Group &copy; <span id="year"></span>. All rights reserved.</p><p style="margin-top:10px;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p></footer>
 <script>document.getElementById("year").textContent=new Date().getFullYear();(()=>{const e=['technology','research','group'].join('')+'@'+['proton','me'].join('.');const l=document.getElementById('emailLink');l.textContent=e;l.href='mailto:'+e;})();</script>
+<a id="topBtn" href="#" title="Back to top">
+    ↑
+</a>
 </body></html>
