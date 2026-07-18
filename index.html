@@ -241,6 +241,33 @@
       z-index: 2;
     }
 
+    /* Subtle topographic contour layer */
+    .hero-topo{
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-topo svg{
+      position: absolute;
+      right: -8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(820px, 78%);
+      height: auto;
+    }
+    .hero-topo .topo-lines{
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 1.6;
+      opacity: .12;
+    }
+    .hero-topo .topo-lines.faint{ opacity: .07; }
+    @media (min-width: 860px){
+      .hero-topo svg{ width: min(900px, 62%); right: -4%; }
+    }
+
     .hero-badge{
       display: inline-flex;
       align-items: center;
@@ -494,6 +521,53 @@
     }
     .contact a:focus-visible{ outline: none; box-shadow: var(--focus); border-radius: 8px; }
 
+    .contact-form{
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      max-width: 560px;
+    }
+    .contact-form label{
+      color: rgba(255,255,255,.92);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .contact-form input,
+    .contact-form textarea{
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.95);
+      color: var(--text);
+      font: inherit;
+    }
+    .contact-form input:focus-visible,
+    .contact-form textarea:focus-visible{
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(255,255,255,.28);
+    }
+    .contact-form textarea{ min-height: 130px; resize: vertical; }
+    .contact-form .hp{ position: absolute; left: -9999px; opacity: 0; }
+    .contact-form button{
+      justify-self: start;
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.96);
+      color: var(--brand);
+      font-weight: 850;
+      font-size: 1rem;
+      padding: 13px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .contact-form button:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.18);
+    }
+    .contact-form button:focus-visible{ outline: none; box-shadow: var(--focus); }
+
     /* Footer */
     footer{
       background: #0d223b;
@@ -628,6 +702,22 @@
   </header>
 
   <section class="hero" role="banner">
+    <div class="hero-topo" aria-hidden="true">
+      <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <g class="topo-lines">
+          <path d="M 500,300 C 500,180 620,110 760,110 C 940,110 1140,170 1140,320 C 1140,470 980,540 820,530 C 660,520 500,460 500,300 Z" />
+          <path d="M 560,300 C 560,205 665,150 780,150 C 930,150 1090,205 1090,325 C 1090,445 955,500 820,492 C 690,485 560,430 560,300 Z" />
+          <path d="M 620,300 C 620,230 705,190 800,190 C 920,190 1040,235 1040,330 C 1040,425 930,462 820,455 C 720,449 620,405 620,300 Z" />
+          <path d="M 680,302 C 680,255 745,228 815,228 C 905,228 990,262 990,335 C 990,405 905,428 820,422 C 745,417 680,388 680,302 Z" />
+          <path d="M 740,308 C 740,278 780,262 825,262 C 885,262 940,288 940,338 C 940,388 885,398 828,394 C 782,391 740,372 740,308 Z" />
+        </g>
+        <g class="topo-lines faint">
+          <path d="M 120,470 C 160,410 250,400 320,430 C 400,464 420,540 360,585" />
+          <path d="M 60,430 C 120,350 250,340 350,385 C 450,430 470,545 400,600" />
+          <path d="M 30,150 C 110,110 210,140 250,220" />
+        </g>
+      </svg>
+    </div>
     <div class="container">
       <div class="hero-badge">
         <span class="dot" aria-hidden="true"></span>
@@ -799,7 +889,7 @@
           </p>
           <p>
             Attendance is by invitation. Members, partners, and invited guests will receive the specific date, time, location, and agenda directly.
-            If you are affiliated with Technology Research Group and have not received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact</a> email.
+            If you are affiliated with Technology Research Group and have not received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact</a> form.
           </p>
         </article>
       </div>
@@ -812,10 +902,27 @@
         <h2>Contact</h2>
         <p>Technology Research Group<br />Milwaukee, Wisconsin</p>
         <br />
-        <p>
-          General inquiries:
-          <a id="emailLink" href="#" aria-label="General inquiries email">Loading...</a>
-        </p>
+        <p>For general inquiries, please use the form below and we will respond by email.</p>
+
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io — free tier works).
+             Your email address stays hidden server-side and is never in the page source. -->
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div>
+            <label for="cf-name">Name</label>
+            <input id="cf-name" type="text" name="name" autocomplete="name" required />
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input id="cf-email" type="email" name="email" autocomplete="email" required />
+          </div>
+          <div>
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required></textarea>
+          </div>
+          <!-- Honeypot: hidden from humans, bots fill it and get rejected -->
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit">Send message</button>
+        </form>
       </div>
     </div>
   </section>
@@ -835,15 +942,6 @@
   <script>
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Obfuscated email (keeps your original behavior)
-    (() => {
-      const e = ["technology", "research", "group"].join("") + "@" + ["proton", "me"].join(".");
-      const l = document.getElementById("emailLink");
-      if (!l) return;
-      l.textContent = e;
-      l.href = "mailto:" + e;
-    })();
 
     // Mobile menu
     (() => {
