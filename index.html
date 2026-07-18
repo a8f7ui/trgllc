@@ -240,34 +240,6 @@
       position: relative;
       z-index: 2;
     }
-
-    /* Subtle topographic contour layer */
-    .hero-topo{
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .hero-topo svg{
-      position: absolute;
-      right: -8%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: min(820px, 78%);
-      height: auto;
-    }
-    .hero-topo .topo-lines{
-      fill: none;
-      stroke: #ffffff;
-      stroke-width: 1.6;
-      opacity: .12;
-    }
-    .hero-topo .topo-lines.faint{ opacity: .07; }
-    @media (min-width: 860px){
-      .hero-topo svg{ width: min(900px, 62%); right: -4%; }
-    }
-
     .hero-badge{
       display: inline-flex;
       align-items: center;
