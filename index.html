@@ -568,6 +568,24 @@
     }
     .contact-form button:focus-visible{ outline: none; box-shadow: var(--focus); }
 
+    .form-status{ margin-top: 4px; font-weight: 750; font-size: .95rem; }
+    .form-status:empty{ display: none; }
+    .form-status[data-fs-success]{ color: #cdfadf; }
+    .form-status--error{ color: #ffd7d7; }
+    .field-error{
+      display: block;
+      margin-top: 4px;
+      color: #ffd7d7;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .field-error:empty{ display: none; }
+    .contact-form input[aria-invalid="true"],
+    .contact-form textarea[aria-invalid="true"]{
+      border-color: #ffb4b4;
+      box-shadow: 0 0 0 3px rgba(255,120,120,.25);
+    }
+
     /* Footer */
     footer{
       background: #0d223b;
@@ -889,7 +907,7 @@
           </p>
           <p>
             Attendance is by invitation. Members, partners, and invited guests will receive the specific date, time, location, and agenda directly.
-            If you are affiliated with Technology Research Group and have not received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact</a> form.
+            If you are affiliated with Technology Research Group and have not received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact</a> email.
           </p>
         </article>
       </div>
@@ -904,24 +922,29 @@
         <br />
         <p>For general inquiries, please use the form below and we will respond by email.</p>
 
-        <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io — free tier works).
-             Your email address stays hidden server-side and is never in the page source. -->
-        <form class="contact-form" action="https://formspree.io/f/xeeyglzr" method="POST">
+        <!-- Formspree AJAX: keeps users on-page with inline success/error.
+             action/method are kept as a no-JS fallback. -->
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xeeyglzr" method="POST">
           <div>
             <label for="cf-name">Name</label>
-            <input id="cf-name" type="text" name="name" autocomplete="name" required />
+            <input id="cf-name" type="text" name="name" autocomplete="name" data-fs-field required />
+            <span class="field-error" data-fs-error="name"></span>
           </div>
           <div>
             <label for="cf-email">Email</label>
-            <input id="cf-email" type="email" name="email" autocomplete="email" required />
+            <input id="cf-email" type="email" name="email" autocomplete="email" data-fs-field required />
+            <span class="field-error" data-fs-error="email"></span>
           </div>
           <div>
             <label for="cf-message">Message</label>
-            <textarea id="cf-message" name="message" required></textarea>
+            <textarea id="cf-message" name="message" data-fs-field required></textarea>
+            <span class="field-error" data-fs-error="message"></span>
           </div>
           <!-- Honeypot: hidden from humans, bots fill it and get rejected -->
           <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <button type="submit">Send message</button>
+          <button type="submit" data-fs-submit-btn>Send message</button>
+          <div class="form-status" data-fs-success aria-live="polite"></div>
+          <div class="form-status form-status--error" data-fs-error aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -971,5 +994,12 @@
       });
     })();
   </script>
+
+  <!-- Formspree AJAX SDK -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'xeeyglzr' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
