@@ -418,6 +418,65 @@
       letter-spacing: -0.01em;
     }
 
+    /* News & Events */
+    .news-item{
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--brand);
+      border-radius: var(--radius-sm);
+      padding: 20px 18px;
+      box-shadow: 0 8px 18px rgba(15,31,51,.05);
+      margin-top: 18px;
+    }
+
+    .news-meta{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .news-tag{
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(23,55,94,.08);
+      border: 1px solid rgba(23,55,94,.14);
+      color: var(--brand);
+      font-size: .74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .news-date{
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .news-item h3{
+      color: var(--brand);
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .news-item p + p{
+      margin-top: 10px;
+    }
+
+    .news-item a{
+      color: var(--brand);
+      font-weight: 750;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(23,55,94,.4);
+    }
+    .news-item a:focus-visible{ outline: none; box-shadow: var(--focus); border-radius: 8px; }
+
     /* Contact */
     .contact .section-card{
       background: linear-gradient(180deg, rgba(23,55,94,.98), rgba(23,55,94,.92));
@@ -505,6 +564,10 @@
       .step-top{
         justify-content: center;
       }
+
+      .news-item{
+        padding: 24px 22px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -534,6 +597,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#approach">Approach</a></li>
+          <li><a href="#news">News</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
@@ -552,6 +616,7 @@
               <li><a href="#about" data-close-menu>About</a></li>
               <li><a href="#services" data-close-menu>Services</a></li>
               <li><a href="#approach" data-close-menu>Approach</a></li>
+              <li><a href="#news" data-close-menu>News</a></li>
               <li><a href="#contact" data-close-menu>Contact</a></li>
             </ul>
           </nav>
@@ -693,6 +758,31 @@
             <p>Deliverables are designed to support real decisions, not just documentation.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="container">
+      <div class="section-card">
+        <h2>News &amp; Events</h2>
+        <p>Announcements and upcoming events from Technology Research Group.</p>
+
+        <article class="news-item">
+          <div class="news-meta">
+            <span class="news-tag">Upcoming Event</span>
+            <span class="news-date">September 2026</span>
+          </div>
+          <h3>Annual Meeting — September 2026</h3>
+          <p>
+            Technology Research Group will hold its annual meeting this September in the Milwaukee, Wisconsin area.
+            The meeting will include a review of the past year's research activities and findings, a discussion of ongoing evaluation work, and planning for upcoming projects and priorities.
+          </p>
+          <p>
+            Attendance is by invitation. Members, partners, and invited guests will receive the specific date, time, location, and agenda directly.
+            If you are affiliated with Technology Research Group and have not received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact</a> email.
+          </p>
+        </article>
       </div>
     </div>
   </section>
