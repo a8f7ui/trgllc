@@ -9,22 +9,20 @@
 
   <style>
     :root{
-      --ink: #111418;
-      --muted: #565b62;
+      /* Palette derived from the logo: ink #14232e, accent #b54232 */
+      --ink: #14232e;
+      --muted: #5a6673;
       --paper: #faf9f7;
       --surface: #ffffff;
-      --mist: #f0efec;
+      --mist: #eff1f0;
 
-      --accent: #b0402f;         /* restrained signal red — used sparingly */
-      --navy: #1c3d5a;
-
-      --line: rgba(17,20,24,.14);
-      --line-strong: rgba(17,20,24,.26);
+      --accent: #b54232;
+      --line: rgba(20,35,46,.14);
+      --line-strong: rgba(20,35,46,.26);
 
       --container: 1160px;
       --gutter: clamp(20px, 5vw, 48px);
-
-      --focus: 0 0 0 3px rgba(176,64,47,.32);
+      --focus: 0 0 0 3px rgba(181,66,50,.32);
 
       --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
       --grotesk: -apple-system, "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
@@ -32,301 +30,116 @@
 
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-    body{
-      font-family: var(--grotesk);
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    body{ font-family: var(--grotesk); color: var(--ink); background: var(--paper); line-height:1.55; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
     img{ max-width:100%; display:block; }
 
-    /* Swiss-International signature: a single disciplined red rule at the very top */
-    .topbar{ height: 3px; background: var(--accent); }
+    .topbar{ height:3px; background: var(--accent); }
+    .container{ width:100%; max-width: var(--container); margin:0 auto; padding-inline: var(--gutter); }
 
-    .container{
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding-inline: var(--gutter);
-    }
-
-    /* Type devices */
-    .eyebrow{
-      font-family: var(--mono);
-      font-size: .72rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--ink);
-      font-weight: 500;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 12px;
-    }
+    .eyebrow{ font-family: var(--mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color: var(--ink); font-weight:500; display:inline-flex; align-items:baseline; gap:12px; }
     .eyebrow .ix{ color: var(--accent); }
-    .lead{
-      font-size: clamp(1.08rem, 1.7vw, 1.3rem);
-      color: var(--muted);
-      max-width: 56ch;
-      line-height: 1.5;
-    }
+    .lead{ font-size: clamp(1.08rem,1.7vw,1.3rem); color: var(--muted); max-width:56ch; line-height:1.5; }
 
-    /* Header / Nav */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background:#ffffff;
-      backdrop-filter:none;
-      -webkit-backdrop-filter:none;
-      border-bottom: 1px solid var(--line);
-    }
-    nav{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 0;
-      gap: 16px;
-    }
+    header{ position:sticky; top:0; z-index:50; background:#ffffff; border-bottom:1px solid var(--line); }
+    nav{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:16px; }
+
+    /* Horizontal logo */
     .logo{ display:flex; align-items:center; text-decoration:none; }
-    .logo img{ display:block; width:auto; height:58px; max-width:280px; }
+    .logo img{ display:block; width:auto; height:62px; max-width:420px; }
+    @media (max-width: 719px){ .logo img{ height:50px; max-width:320px; } }
 
-    .nav-links{ display:none; gap: 2px; list-style:none; align-items:center; }
-    .nav-links a{
-      text-decoration:none; color: var(--muted);
-      font-size: .86rem; font-weight: 550; letter-spacing: .01em;
-      padding: 8px 12px;
-      border-bottom: 2px solid transparent;
-      transition: color .15s ease, border-color .15s ease;
-    }
+    .nav-links{ display:none; gap:2px; list-style:none; align-items:center; }
+    .nav-links a{ text-decoration:none; color: var(--muted); font-size:.86rem; font-weight:550; letter-spacing:.01em; padding:8px 12px; border-bottom:2px solid transparent; transition: color .15s ease, border-color .15s ease; }
     .nav-links a:hover{ color: var(--ink); border-bottom-color: var(--accent); }
     .nav-links a:focus-visible{ outline:none; box-shadow: var(--focus); }
 
-    .menu-btn{
-      appearance:none; border:1px solid var(--line-strong); background: var(--surface);
-      padding: 9px 12px; cursor:pointer;
-      display:inline-flex; align-items:center; gap:9px;
-      color: var(--ink); font-family: var(--mono);
-      font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
-    }
+    .menu-btn{ appearance:none; border:1px solid var(--line-strong); background: var(--surface); padding:9px 12px; cursor:pointer; display:inline-flex; align-items:center; gap:9px; color: var(--ink); font-family: var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; }
     .menu-btn:focus-visible{ outline:none; box-shadow: var(--focus); }
     .menu-icon{ width:16px; height:12px; position:relative; display:inline-block; }
-    .menu-icon span{
-      position:absolute; left:0; right:0; height:1.5px; background: currentColor;
-      transition: transform .18s ease, top .18s ease, opacity .18s ease;
-    }
-    .menu-icon span:nth-child(1){ top:0; }
-    .menu-icon span:nth-child(2){ top:5px; }
-    .menu-icon span:nth-child(3){ top:10px; }
+    .menu-icon span{ position:absolute; left:0; right:0; height:1.5px; background: currentColor; }
+    .menu-icon span:nth-child(1){ top:0; } .menu-icon span:nth-child(2){ top:5px; } .menu-icon span:nth-child(3){ top:10px; }
 
     .mobile-drawer{ display:grid; grid-template-rows:0fr; transition: grid-template-rows .22s ease; border-top:1px solid transparent; }
     .mobile-drawer[data-open="true"]{ grid-template-rows:1fr; border-top-color: var(--line); }
     .mobile-drawer-inner{ overflow:hidden; }
-    .mobile-links{ list-style:none; display:grid; gap:0; padding: 6px 0 14px; }
-    .mobile-links a{
-      display:block; text-decoration:none; color: var(--ink);
-      font-weight: 600; padding: 13px 4px;
-      border-bottom: 1px solid var(--line);
-      transition: color .15s ease;
-    }
+    .mobile-links{ list-style:none; display:grid; gap:0; padding:6px 0 14px; }
+    .mobile-links a{ display:block; text-decoration:none; color: var(--ink); font-weight:600; padding:13px 4px; border-bottom:1px solid var(--line); transition: color .15s ease; }
     .mobile-links a:hover{ color: var(--accent); }
     .mobile-links a:focus-visible{ outline:none; box-shadow: var(--focus); }
 
-    /* Hero */
-    .hero{
-      position:relative;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
-      background:var(--paper);
-    }
-    .hero .container{position:relative;z-index:1}
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:34px;
-      padding:clamp(44px,7vw,88px) 0;
-    }
-    .hero-copy{min-width:0}
-    .hero h1{
-      font-size:clamp(2.45rem,6vw,4.8rem);
-      line-height:.99;
-      letter-spacing:-.04em;
-      font-weight:700;
-      margin:22px 0;
-      max-width:15ch;
-    }
-    .hero h1 .soft{color:var(--muted)}
-    .hero .lead{margin-bottom:30px}
+    .hero{ position:relative; overflow:hidden; border-bottom:1px solid var(--line); background: var(--paper); }
+    .hero .container{ position:relative; z-index:1; }
+    .hero-grid{ display:grid; grid-template-columns:1fr; gap:34px; padding:clamp(44px,7vw,88px) 0; }
+    .hero-copy{ min-width:0; }
+    .hero h1{ font-size:clamp(2.45rem,6vw,4.8rem); line-height:.99; letter-spacing:-.04em; font-weight:700; margin:22px 0; max-width:15ch; }
+    .hero h1 .soft{ color: var(--muted); }
+    .hero .lead{ margin-bottom:30px; }
 
-    .hero-media{
-      min-height:300px;
-      border:1px solid var(--line-strong);
-      background-image:url("/assets/header.jpg");
-      background-position:center;
-      background-size:cover;
-      background-repeat:no-repeat;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-media::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg,rgba(28,61,90,.12),rgba(250,249,247,.02));
-      pointer-events:none;
-    }
-    .hero-media-label{
-      position:absolute;
-      left:0;
-      bottom:0;
-      z-index:2;
-      background:rgba(255,255,255,.94);
-      border-top:1px solid var(--line);
-      border-right:1px solid var(--line);
-      padding:10px 13px;
-      font-family:var(--mono);
-      font-size:.66rem;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
+    .hero-media{ min-height:300px; border:1px solid var(--line-strong); background-image:url("/assets/header.jpg"); background-position:center; background-size:cover; background-repeat:no-repeat; position:relative; overflow:hidden; }
+    .hero-media::after{ content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(28,61,90,.10),rgba(250,249,247,.02)); pointer-events:none; }
+    .hero-media-label{ position:absolute; left:0; bottom:0; z-index:2; background:rgba(255,255,255,.94); border-top:1px solid var(--line); border-right:1px solid var(--line); padding:10px 13px; font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
 
-    .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-    .button{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      text-decoration:none;
-      font-weight:650;
-      font-size:.92rem;
-      padding:13px 22px;
-      border:1px solid var(--ink);
-      background:var(--ink);
-      color:#fff;
-      transition:background .15s ease,color .15s ease,transform .15s ease;
-    }
-    .button:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
-    .button:focus-visible{outline:none;box-shadow:var(--focus)}
-    .button.secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
-    .button.secondary:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
-    .button .arrow{font-family:var(--mono)}
+    .actions{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+    .button{ display:inline-flex; align-items:center; gap:9px; text-decoration:none; font-weight:650; font-size:.92rem; padding:13px 22px; border:1px solid var(--ink); background: var(--ink); color:#fff; transition: background .15s ease, color .15s ease, transform .15s ease; }
+    .button:hover{ background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+    .button:focus-visible{ outline:none; box-shadow: var(--focus); }
+    .button.secondary{ background:transparent; color: var(--ink); border-color: var(--line-strong); }
+    .button.secondary:hover{ color: var(--accent); border-color: var(--accent); }
+    .button .arrow{ font-family: var(--mono); }
 
-    .masthead{
-      font-family:var(--mono);
-      font-size:.74rem;
-      color:var(--muted);
-      display:grid;
-      gap:10px;
-      border-top:1px solid var(--line);
-      padding-top:20px;
-      max-width:30rem;
-    }
-    .masthead div{display:flex;justify-content:space-between;gap:16px}
-    .masthead dt{text-transform:uppercase;letter-spacing:.12em}
-    .masthead dd{color:var(--ink);text-align:right}
+    .masthead{ font-family:var(--mono); font-size:.74rem; color:var(--muted); display:grid; gap:10px; border-top:1px solid var(--line); padding-top:20px; max-width:30rem; }
+    .masthead div{ display:flex; justify-content:space-between; gap:16px; }
+    .masthead dt{ text-transform:uppercase; letter-spacing:.12em; }
+    .masthead dd{ color: var(--ink); text-align:right; }
 
-    /* Sections */
-    section{ padding: clamp(56px, 8vw, 104px) 0; }
-    .band{ background: var(--mist); border-block: 1px solid var(--line); }
+    section{ padding: clamp(56px,8vw,104px) 0; }
+    .band{ background: var(--mist); border-block:1px solid var(--line); }
+    .section-head{ max-width:60ch; margin-bottom: clamp(30px,4.5vw,52px); }
+    .section-head h2{ font-size: clamp(1.7rem,3.6vw,2.7rem); line-height:1.06; letter-spacing:-.032em; font-weight:690; margin-top:16px; }
+    .prose p{ color: var(--muted); max-width:66ch; font-size:1.02rem; }
+    .prose p + p{ margin-top:16px; }
 
-    .section-head{ max-width: 60ch; margin-bottom: clamp(30px, 4.5vw, 52px); }
-    .section-head h2{
-      font-size: clamp(1.7rem, 3.6vw, 2.7rem);
-      line-height: 1.06;
-      letter-spacing: -0.032em;
-      font-weight: 690;
-      margin-top: 16px;
-    }
-
-    .prose p{ color: var(--muted); max-width: 66ch; font-size: 1.02rem; }
-    .prose p + p{ margin-top: 16px; }
-
-    /* Grid system */
-    .grid{
-      display:grid; grid-template-columns: 1fr;
-      gap: 1px; background: var(--line);
-      border: 1px solid var(--line);
-    }
-    .cell{ background: var(--paper); padding: 28px 26px; transition: background .15s ease; }
+    .grid{ display:grid; grid-template-columns:1fr; gap:1px; background: var(--line); border:1px solid var(--line); }
+    .cell{ background: var(--paper); padding:28px 26px; transition: background .15s ease; }
     .band .cell{ background: var(--mist); }
     .cell:hover{ background: var(--surface); }
-    .band .cell:hover{ background: #e9e8e4; }
+    .band .cell:hover{ background:#e9e8e4; }
     .cell .idx{ font-family: var(--mono); font-size:.74rem; letter-spacing:.12em; color: var(--accent); }
-    .cell h3{ font-size:1.06rem; font-weight:660; letter-spacing:-0.01em; margin: 14px 0 8px; }
+    .cell h3{ font-size:1.06rem; font-weight:660; letter-spacing:-.01em; margin:14px 0 8px; }
     .cell p{ color: var(--muted); font-size:.95rem; margin:0; }
 
-    /* Approach — genuine ordered sequence */
-    .steps{ display:grid; grid-template-columns: 1fr; border-top: 1px solid var(--ink); }
-    .step{
-      display:grid; grid-template-columns: 3rem 1fr; gap: 20px;
-      padding: 26px 0; border-bottom: 1px solid var(--line); align-items: baseline;
-    }
+    .steps{ display:grid; grid-template-columns:1fr; border-top:1px solid var(--ink); }
+    .step{ display:grid; grid-template-columns:3rem 1fr; gap:20px; padding:26px 0; border-bottom:1px solid var(--line); align-items:baseline; }
     .step .num{ font-family: var(--mono); font-size:.9rem; color: var(--accent); letter-spacing:.08em; }
-    .step h3{ font-size:1.14rem; font-weight:660; letter-spacing:-0.01em; margin-bottom:5px; }
+    .step h3{ font-size:1.14rem; font-weight:660; letter-spacing:-.01em; margin-bottom:5px; }
     .step p{ color: var(--muted); font-size:.97rem; }
 
-    /* Leadership */
-    .lede-block{ display:grid; gap: 18px; }
-    .lede-block p{ color: var(--muted); max-width: 72ch; font-size: 1.05rem; }
-    .lede-block .pull{
-      color: var(--ink);
-      font-size: clamp(1.2rem, 2.4vw, 1.65rem);
-      line-height: 1.25;
-      letter-spacing: -0.02em;
-      font-weight: 600;
-      max-width: 26ch;
-      border-left: 3px solid var(--accent);
-      padding-left: 20px;
-    }
+    .lede-block{ display:grid; gap:18px; }
+    .lede-block p{ color: var(--muted); max-width:72ch; font-size:1.05rem; }
+    .lede-block .pull{ color: var(--ink); font-size: clamp(1.2rem,2.4vw,1.65rem); line-height:1.25; letter-spacing:-.02em; font-weight:600; max-width:26ch; border-left:3px solid var(--accent); padding-left:20px; }
 
-    /* News */
-    .news-item{ border-top: 1px solid var(--ink); padding-top: 26px; }
-    .news-meta{
-      display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:14px;
-      font-family: var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
-    }
+    .news-item{ border-top:1px solid var(--ink); padding-top:26px; }
+    .news-meta{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:14px; font-family: var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
     .news-tag{ color: var(--accent); }
     .news-date{ color: var(--muted); }
-    .news-item h3{ font-size:1.32rem; font-weight:680; letter-spacing:-0.02em; margin-bottom:12px; }
-    .news-item p{ color: var(--muted); max-width: 70ch; }
+    .news-item h3{ font-size:1.32rem; font-weight:680; letter-spacing:-.02em; margin-bottom:12px; }
+    .news-item p{ color: var(--muted); max-width:70ch; }
     .news-item p + p{ margin-top:12px; }
     .news-item a{ color: var(--accent); font-weight:600; text-underline-offset:3px; }
     .news-item a:focus-visible{ outline:none; box-shadow: var(--focus); }
 
-    /* Contact */
     .contact-wrap{ display:grid; grid-template-columns:1fr; gap: clamp(30px,5vw,64px); align-items:start; }
     .contact-aside .who{ color: var(--ink); font-weight:660; font-size:1.06rem; margin-bottom:8px; }
-    .contact-aside p{ color: var(--muted); max-width: 40ch; }
-    .contact-meta{
-      margin-top: 22px; padding-top: 18px; border-top:1px solid var(--line);
-      font-family: var(--mono); font-size:.72rem; letter-spacing:.06em; color: var(--muted);
-      display:grid; gap:6px;
-    }
+    .contact-aside p{ color: var(--muted); max-width:40ch; }
+    .contact-meta{ margin-top:22px; padding-top:18px; border-top:1px solid var(--line); font-family: var(--mono); font-size:.72rem; letter-spacing:.06em; color: var(--muted); display:grid; gap:6px; }
 
     .contact-form{ display:grid; gap:18px; max-width:520px; }
-    .field label{
-      display:block; font-family: var(--mono);
-      font-size:.66rem; letter-spacing:.14em; text-transform:uppercase;
-      color: var(--muted); margin-bottom:8px;
-    }
-    .contact-form input, .contact-form textarea{
-      width:100%; padding:12px 13px;
-      border:1px solid var(--line-strong); background: var(--surface);
-      color: var(--ink); font: inherit; border-radius:0;
-      transition: border-color .15s ease, box-shadow .15s ease;
-    }
-    .contact-form input:focus-visible, .contact-form textarea:focus-visible{
-      outline:none; border-color: var(--accent); box-shadow: var(--focus);
-    }
+    .field label{ display:block; font-family: var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color: var(--muted); margin-bottom:8px; }
+    .contact-form input, .contact-form textarea{ width:100%; padding:12px 13px; border:1px solid var(--line-strong); background: var(--surface); color: var(--ink); font:inherit; border-radius:0; transition: border-color .15s ease, box-shadow .15s ease; }
+    .contact-form input:focus-visible, .contact-form textarea:focus-visible{ outline:none; border-color: var(--accent); box-shadow: var(--focus); }
     .contact-form textarea{ min-height:130px; resize:vertical; }
     .contact-form .hp{ position:absolute; left:-9999px; opacity:0; }
-    .contact-form button{
-      justify-self:start; appearance:none;
-      border:1px solid var(--ink); background: var(--ink); color:#fff;
-      font-weight:650; font-size:.92rem; padding:13px 26px; cursor:pointer;
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
-    }
+    .contact-form button{ justify-self:start; appearance:none; border:1px solid var(--ink); background: var(--ink); color:#fff; font-weight:650; font-size:.92rem; padding:13px 26px; cursor:pointer; transition: background .15s ease, border-color .15s ease, transform .15s ease; }
     .contact-form button:hover{ background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
     .contact-form button:focus-visible{ outline:none; box-shadow: var(--focus); }
 
@@ -336,38 +149,22 @@
     .form-status--error{ color: var(--accent); }
     .field-error{ display:block; margin-top:6px; color: var(--accent); font-size:.8rem; font-weight:600; }
     .field-error:empty{ display:none; }
-    .contact-form input[aria-invalid="true"], .contact-form textarea[aria-invalid="true"]{
-      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176,64,47,.18);
-    }
+    .contact-form input[aria-invalid="true"], .contact-form textarea[aria-invalid="true"]{ border-color: var(--accent); box-shadow: 0 0 0 3px rgba(181,66,50,.18); }
 
-    /* Footer */
-    footer{ background: var(--ink); color: rgba(255,255,255,.7); padding: 44px 0 34px; font-size:.88rem; }
-    .footer-top{
-      display:flex; flex-wrap:wrap; gap:16px 28px; align-items:baseline; justify-content:space-between;
-      padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,.14);
-    }
-    .footer-brand{ font-weight:680; color:#fff; letter-spacing:-0.015em; font-size: 1rem; }
+    footer{ background: var(--ink); color: rgba(255,255,255,.7); padding:44px 0 34px; font-size:.88rem; }
+    .footer-top{ display:flex; flex-wrap:wrap; gap:16px 28px; align-items:baseline; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.14); }
+    .footer-brand{ font-weight:680; color:#fff; letter-spacing:-.015em; font-size:1rem; }
     .footer-entity{ font-family: var(--mono); font-size:.7rem; letter-spacing:.08em; color: rgba(255,255,255,.6); text-align:right; }
-    .footer-bottom{
-      display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; justify-content:space-between; padding-top:20px;
-    }
+    .footer-bottom{ display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; justify-content:space-between; padding-top:20px; }
     footer a{ color: rgba(255,255,255,.8); text-decoration:none; }
     footer a:hover{ color:#fff; border-bottom:1px solid var(--accent); }
     .footer-links{ display:flex; gap:18px; }
 
-    /* Back to top */
-    #topBtn{
-      position:fixed; right:18px; bottom:18px; width:42px; height:42px;
-      background: var(--ink); color:#fff; display:flex; align-items:center; justify-content:center;
-      font-family: var(--mono); text-decoration:none;
-      opacity:0; pointer-events:none; transform: translateY(8px);
-      transition: opacity .2s ease, transform .2s ease, background .15s ease; z-index:40;
-    }
+    #topBtn{ position:fixed; right:18px; bottom:18px; width:42px; height:42px; background: var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-family: var(--mono); text-decoration:none; opacity:0; pointer-events:none; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, background .15s ease; z-index:40; }
     #topBtn.show{ opacity:.92; pointer-events:auto; transform: translateY(0); }
     #topBtn:hover{ opacity:1; background: var(--accent); }
     #topBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
 
-    /* Responsive */
     @media (min-width: 720px){
       .grid{ grid-template-columns: repeat(2,1fr); }
       .contact-wrap{ grid-template-columns: 0.75fr 1.15fr; }
@@ -380,22 +177,12 @@
       .menu-btn{ display:none; }
       .mobile-drawer{ display:none; }
       .grid.cols-4{ grid-template-columns: repeat(4,1fr); }
-      .steps{ grid-template-columns: repeat(2,1fr); column-gap: 48px; }
+      .steps{ grid-template-columns: repeat(2,1fr); column-gap:48px; }
       .hero-grid{ grid-template-columns: 1.4fr 0.6fr; }
       .masthead{ grid-column: 2; align-self: end; border-top:none; padding-top:0; }
       .hero-copy{ grid-column: 1; }
     }
-
-    @media (max-width: 719px){
-      .logo img{ height:52px; max-width:250px; }
-      .hero{ min-height:500px; }
-      .hero-photo{ background-image: linear-gradient(rgba(250,249,247,.94),rgba(250,249,247,.94)), url("/assets/header.jpg"); }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      *{ transition:none !important; }
-    }
+    @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ transition:none !important; } }
   </style>
 </head>
 
@@ -406,7 +193,7 @@
     <div class="container">
       <nav aria-label="Primary">
         <a class="logo" href="#top" aria-label="Technology Research Group">
-          <img src="/assets/logo.png" alt="Technology Research Group" />
+          <img src="/assets/logo.png" alt="Technology Research Group — Applied Research & Evaluation" />
         </a>
 
         <ul class="nav-links">
@@ -448,19 +235,15 @@
         <div class="hero-copy">
           <span class="eyebrow"><span class="ix">00</span> Applied research &amp; evaluation</span>
           <h1>Independent evaluation of <span class="soft">emerging technology.</span></h1>
-          <p class="lead">
-            We examine how emerging technology behaves in the real world — structured research, field evaluation, and analysis rigorous enough to be relied upon.
-          </p>
+          <p class="lead">We examine how emerging technology behaves in the real world — structured research, field evaluation, and analysis rigorous enough to be relied upon.</p>
           <div class="actions">
             <a class="button" href="#services">Explore our work <span class="arrow" aria-hidden="true">→</span></a>
             <a class="button secondary" href="#contact">Start a conversation</a>
           </div>
         </div>
-
         <div class="hero-media" role="img" aria-label="Technology research and evaluation environment">
           <div class="hero-media-label">Field research / evaluation</div>
         </div>
-
         <dl class="masthead">
           <div><dt>Practice</dt><dd>Research &amp; evaluation</dd></div>
           <div><dt>Location</dt><dd>Milwaukee, Wisconsin</dd></div>
@@ -472,180 +255,86 @@
 
   <section id="about">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">01</span> About</span>
-        <h2>Evidence over assumption.</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">01</span> About</span><h2>Evidence over assumption.</h2></div>
       <div class="prose">
-        <p>
-          Technology Research Group is an applied-technology research and evaluation practice. We assess emerging solutions, validate how they perform under real conditions, and locate the refinements that make technology more reliable and more effective.
-        </p>
-        <p>
-          From first experiment to final report, our engagements are built to produce findings that hold — clear, defensible, and free of embellishment. We regard careful measurement as the more elegant route to a decision than conjecture.
-        </p>
+        <p>Technology Research Group is an applied-technology research and evaluation practice. We assess emerging solutions, validate how they perform under real conditions, and locate the refinements that make technology more reliable and more effective.</p>
+        <p>From first experiment to final report, our engagements are built to produce findings that hold — clear, defensible, and free of embellishment. We regard careful measurement as the more elegant route to a decision than conjecture.</p>
       </div>
     </div>
   </section>
 
   <section id="services" class="band">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">02</span> Capabilities</span>
-        <h2>Core areas of focus</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">02</span> Capabilities</span><h2>Core areas of focus</h2></div>
       <div class="grid cols-4">
-        <div class="cell">
-          <span class="idx">01</span>
-          <h3>Technology Evaluation</h3>
-          <p>Independent assessment of developing technologies — capabilities, limitations, and readiness for operational use.</p>
-        </div>
-        <div class="cell">
-          <span class="idx">02</span>
-          <h3>Field Testing</h3>
-          <p>Structured observation and validation in real conditions, producing meaningful performance data and objective findings.</p>
-        </div>
-        <div class="cell">
-          <span class="idx">03</span>
-          <h3>Applied Research</h3>
-          <p>Research focused on practical implementation, measurable outcomes, and informed decision support.</p>
-        </div>
-        <div class="cell">
-          <span class="idx">04</span>
-          <h3>Technical Reporting</h3>
-          <p>Clear documentation, evidence-based conclusions, and actionable recommendations in a professional format.</p>
-        </div>
+        <div class="cell"><span class="idx">01</span><h3>Technology Evaluation</h3><p>Independent assessment of developing technologies — capabilities, limitations, and readiness for operational use.</p></div>
+        <div class="cell"><span class="idx">02</span><h3>Field Testing</h3><p>Structured observation and validation in real conditions, producing meaningful performance data and objective findings.</p></div>
+        <div class="cell"><span class="idx">03</span><h3>Applied Research</h3><p>Research focused on practical implementation, measurable outcomes, and informed decision support.</p></div>
+        <div class="cell"><span class="idx">04</span><h3>Technical Reporting</h3><p>Clear documentation, evidence-based conclusions, and actionable recommendations in a professional format.</p></div>
       </div>
     </div>
   </section>
 
   <section id="approach">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">03</span> Method</span>
-        <h2>How an engagement moves</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">03</span> Method</span><h2>How an engagement moves</h2></div>
       <div class="steps">
-        <div class="step">
-          <span class="num">01</span>
-          <div><h3>Research</h3><p>Define the questions, objectives, and evaluation criteria that frame the work.</p></div>
-        </div>
-        <div class="step">
-          <span class="num">02</span>
-          <div><h3>Evaluate</h3><p>Conduct structured testing and practical observation under real conditions.</p></div>
-        </div>
-        <div class="step">
-          <span class="num">03</span>
-          <div><h3>Analyze</h3><p>Review findings using objective, evidence-based methods.</p></div>
-        </div>
-        <div class="step">
-          <span class="num">04</span>
-          <div><h3>Report</h3><p>Deliver concise recommendations and documented conclusions.</p></div>
-        </div>
+        <div class="step"><span class="num">01</span><div><h3>Research</h3><p>Define the questions, objectives, and evaluation criteria that frame the work.</p></div></div>
+        <div class="step"><span class="num">02</span><div><h3>Evaluate</h3><p>Conduct structured testing and practical observation under real conditions.</p></div></div>
+        <div class="step"><span class="num">03</span><div><h3>Analyze</h3><p>Review findings using objective, evidence-based methods.</p></div></div>
+        <div class="step"><span class="num">04</span><div><h3>Report</h3><p>Deliver concise recommendations and documented conclusions.</p></div></div>
       </div>
     </div>
   </section>
 
   <section class="band">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">04</span> Why us</span>
-        <h2>What organizations rely on us for</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">04</span> Why us</span><h2>What organizations rely on us for</h2></div>
       <div class="grid cols-4">
-        <div class="cell">
-          <h3>Objective perspective</h3>
-          <p>Evaluations grounded in impartial observation and practical findings.</p>
-        </div>
-        <div class="cell">
-          <h3>Evidence-based results</h3>
-          <p>Recommendations built on documented research and structured testing.</p>
-        </div>
-        <div class="cell">
-          <h3>Professional standards</h3>
-          <p>Every engagement handled with consistency, discretion, and rigor.</p>
-        </div>
-        <div class="cell">
-          <h3>Actionable insight</h3>
-          <p>Deliverables designed to support real decisions, not just documentation.</p>
-        </div>
+        <div class="cell"><h3>Objective perspective</h3><p>Evaluations grounded in impartial observation and practical findings.</p></div>
+        <div class="cell"><h3>Evidence-based results</h3><p>Recommendations built on documented research and structured testing.</p></div>
+        <div class="cell"><h3>Professional standards</h3><p>Every engagement handled with consistency, discretion, and rigor.</p></div>
+        <div class="cell"><h3>Actionable insight</h3><p>Deliverables designed to support real decisions, not just documentation.</p></div>
       </div>
     </div>
   </section>
 
   <section id="leadership">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">05</span> Leadership</span>
-        <h2>Experienced across public and private engagements</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">05</span> Leadership</span><h2>Experienced across public and private engagements</h2></div>
       <div class="lede-block">
         <p class="pull">Precision, discretion, and findings that survive scrutiny.</p>
-        <p>
-          Technology Research Group is guided by a leadership team with extensive experience supporting both public-sector and private enterprise clients. Our directors have led research, evaluation, and technical advisory work across institutional and commercial environments, and understand the standards of rigor, documentation, and discretion those settings require.
-        </p>
-        <p>
-          That background shapes how we operate: engagements are handled with professionalism and confidentiality, findings are documented to withstand scrutiny, and client information is never disclosed without authorization. In keeping with the confidential nature of our work, we do not publish client names or engagement details.
-        </p>
+        <p>Technology Research Group is guided by a leadership team with extensive experience supporting both public-sector and private enterprise clients. Our directors have led research, evaluation, and technical advisory work across institutional and commercial environments, and understand the standards of rigor, documentation, and discretion those settings require.</p>
+        <p>That background shapes how we operate: engagements are handled with professionalism and confidentiality, findings are documented to withstand scrutiny, and client information is never disclosed without authorization. In keeping with the confidential nature of our work, we do not publish client names or engagement details.</p>
       </div>
     </div>
   </section>
 
   <section id="news" class="band">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">06</span> News</span>
-        <h2>News &amp; events</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">06</span> News</span><h2>News &amp; events</h2></div>
       <article class="news-item">
-        <div class="news-meta">
-          <span class="news-tag">Upcoming event</span>
-          <span class="news-date">September 2026</span>
-        </div>
+        <div class="news-meta"><span class="news-tag">Upcoming event</span><span class="news-date">September 2026</span></div>
         <h3>Annual Meeting — September 2026</h3>
-        <p>
-          Technology Research Group will hold its annual meeting this September. The agenda includes a review of the past year's research activities and findings, discussion of ongoing evaluation work, and planning for upcoming projects and priorities.
-        </p>
-        <p>
-          Attendance is by invitation. Members, partners, and invited guests receive the date, location, and agenda directly. If you're affiliated with the group and haven't received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact form</a>.
-        </p>
+        <p>Technology Research Group will hold its annual meeting this September. The agenda includes a review of the past year's research activities and findings, discussion of ongoing evaluation work, and planning for upcoming projects and priorities.</p>
+        <p>Attendance is by invitation. Members, partners, and invited guests receive the date, location, and agenda directly. If you're affiliated with the group and haven't received your invitation, or would like more information about attending, please reach out through our <a href="#contact">contact form</a>.</p>
       </article>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><span class="ix">07</span> Contact</span>
-        <h2>Start a conversation</h2>
-      </div>
+      <div class="section-head"><span class="eyebrow"><span class="ix">07</span> Contact</span><h2>Start a conversation</h2></div>
       <div class="contact-wrap">
         <div class="contact-aside">
           <p class="who">Technology Research Group</p>
           <p>Tell us a little about what you're evaluating and we'll follow up by email. For confidential inquiries, keep your first message brief and we'll take the details offline.</p>
-          <dl class="contact-meta">
-            <div>By introduction and inquiry</div>
-            <div>Public &amp; private engagements</div>
-          </dl>
+          <dl class="contact-meta"><div>By introduction and inquiry</div><div>Public &amp; private engagements</div></dl>
         </div>
-
-        <!-- Formspree AJAX: keeps users on-page with inline success/error.
-             action/method are kept as a no-JS fallback. -->
         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xeeyglzr" method="POST">
-          <div class="field">
-            <label for="cf-name">Name</label>
-            <input id="cf-name" type="text" name="name" autocomplete="name" data-fs-field required />
-            <span class="field-error" data-fs-error="name"></span>
-          </div>
-          <div class="field">
-            <label for="cf-email">Email</label>
-            <input id="cf-email" type="email" name="email" autocomplete="email" data-fs-field required />
-            <span class="field-error" data-fs-error="email"></span>
-          </div>
-          <div class="field">
-            <label for="cf-message">Message</label>
-            <textarea id="cf-message" name="message" data-fs-field required></textarea>
-            <span class="field-error" data-fs-error="message"></span>
-          </div>
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" autocomplete="name" data-fs-field required /><span class="field-error" data-fs-error="name"></span></div>
+          <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" autocomplete="email" data-fs-field required /><span class="field-error" data-fs-error="email"></span></div>
+          <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" data-fs-field required></textarea><span class="field-error" data-fs-error="message"></span></div>
           <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button type="submit" data-fs-submit-btn>Send message</button>
           <div class="form-status" data-fs-success aria-live="polite"></div>
@@ -663,10 +352,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; <span id="year"></span> Technology Research Group. All rights reserved.</span>
-        <span class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-        </span>
+        <span class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span>
       </div>
     </div>
   </footer>
@@ -675,35 +361,21 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
     (() => {
       const btn = document.getElementById("menuBtn");
       const drawer = document.getElementById("mobileDrawer");
       if (!btn || !drawer) return;
-      const setOpen = (open) => {
-        drawer.dataset.open = String(open);
-        btn.setAttribute("aria-expanded", String(open));
-      };
+      const setOpen = (open) => { drawer.dataset.open = String(open); btn.setAttribute("aria-expanded", String(open)); };
       btn.addEventListener("click", () => setOpen(drawer.dataset.open !== "true"));
-      document.querySelectorAll("[data-close-menu]").forEach(a =>
-        a.addEventListener("click", () => setOpen(false))
-      );
-      document.addEventListener("click", (ev) => {
-        if (drawer.dataset.open !== "true") return;
-        if (!drawer.contains(ev.target) && !btn.contains(ev.target)) setOpen(false);
-      });
+      document.querySelectorAll("[data-close-menu]").forEach(a => a.addEventListener("click", () => setOpen(false)));
+      document.addEventListener("click", (ev) => { if (drawer.dataset.open !== "true") return; if (!drawer.contains(ev.target) && !btn.contains(ev.target)) setOpen(false); });
     })();
-
     (() => {
-      const b = document.getElementById("topBtn");
-      if (!b) return;
+      const b = document.getElementById("topBtn"); if (!b) return;
       const onScroll = () => b.classList.toggle("show", window.scrollY > 600);
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
     })();
   </script>
-
-  <!-- Formspree AJAX SDK -->
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#contact-form', formId: 'xeeyglzr' });
