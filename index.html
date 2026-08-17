@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Technology Research Group | Applied Technology Research &amp; Evaluation</title>
   <meta name="description" content="Technology Research Group is an independent applied-technology research and evaluation practice: structured field testing, objective evaluation, and evidence-based recommendations." />
+  <link rel="icon" href="/assets/logo.png" type="image/png" />
 
   <style>
     :root{
@@ -88,21 +89,8 @@
       padding: 15px 0;
       gap: 16px;
     }
-    .logo{ display:flex; align-items:center; gap:13px; text-decoration:none; }
-    .logo-mark{
-      width: 38px; height: 38px; flex:0 0 auto;
-      background: var(--ink);
-      display: grid; place-items: center;
-    }
-    .logo-title{
-      font-weight: 700; letter-spacing: -0.015em;
-      color: var(--ink); line-height: 1.05; font-size: 0.96rem;
-    }
-    .logo-subtitle{
-      font-family: var(--mono);
-      text-transform: uppercase; letter-spacing: .16em;
-      font-size: 0.6rem; color: var(--muted); margin-top: 3px;
-    }
+    .logo{ display:flex; align-items:center; text-decoration:none; }
+    .logo img{ display:block; width:auto; height:58px; max-width:280px; }
 
     .nav-links{ display:none; gap: 2px; list-style:none; align-items:center; }
     .nav-links a{
@@ -150,6 +138,13 @@
       position: relative; overflow: hidden;
       border-bottom: 1px solid var(--line);
       background: var(--paper);
+      min-height: 560px;
+    }
+    .hero-photo{
+      position:absolute; inset:0; z-index:0;
+      background-image: linear-gradient(rgba(250,249,247,.90),rgba(250,249,247,.90)), url("/assets/header.jpg");
+      background-position:center; background-size:cover; background-repeat:no-repeat;
+      opacity:.92;
     }
     .hero-topo{ position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
     .hero-topo svg{
@@ -365,6 +360,12 @@
       .hero-copy{ grid-column: 1; }
     }
 
+    @media (max-width: 719px){
+      .logo img{ height:52px; max-width:250px; }
+      .hero{ min-height:500px; }
+      .hero-photo{ background-image: linear-gradient(rgba(250,249,247,.94),rgba(250,249,247,.94)), url("/assets/header.jpg"); }
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
       *{ transition:none !important; }
@@ -379,17 +380,7 @@
     <div class="container">
       <nav aria-label="Primary">
         <a class="logo" href="#top" aria-label="Technology Research Group">
-          <span class="logo-mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4.2 C15.6 4.2 19 6.6 19 9.9 C19 13.2 15.6 15 12 15 C8.4 15 5 13.2 5 9.9 C5 6.6 8.4 4.2 12 4.2 Z" stroke="#fff" stroke-width="1.1" opacity=".5"/>
-              <path d="M12 7.1 C14.2 7.1 16.2 8.4 16.2 10.2 C16.2 12 14.2 12.9 12 12.9 C9.8 12.9 7.8 12 7.8 10.2 C7.8 8.4 9.8 7.1 12 7.1 Z" stroke="#fff" stroke-width="1.1"/>
-              <circle cx="12" cy="10.1" r="1.05" fill="#fff"/>
-            </svg>
-          </span>
-          <span>
-            <span class="logo-title">Technology Research Group</span>
-            <span class="logo-subtitle">Applied Research &amp; Evaluation</span>
-          </span>
+          <img src="/assets/logo.png" alt="Technology Research Group" />
         </a>
 
         <ul class="nav-links">
@@ -426,6 +417,7 @@
 
   <span id="top"></span>
   <section class="hero" role="banner">
+    <div class="hero-photo" aria-hidden="true"></div>
     <div class="hero-topo" aria-hidden="true">
       <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <g class="topo-lines">
@@ -458,7 +450,7 @@
 
         <dl class="masthead">
           <div><dt>Practice</dt><dd>Research &amp; evaluation</dd></div>
-          <div><dt>Origin</dt><dd>Swiss-founded</dd></div>
+          <div><dt>Location</dt><dd>Milwaukee, Wisconsin</dd></div>
           <div><dt>Engagements</dt><dd>Public &amp; private</dd></div>
         </dl>
       </div>
