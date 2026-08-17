@@ -77,9 +77,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(250,249,247,.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background:#ffffff;
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
       border-bottom: 1px solid var(--line);
     }
     nav{
@@ -135,70 +135,96 @@
 
     /* Hero */
     .hero{
-      position: relative; overflow: hidden;
-      border-bottom: 1px solid var(--line);
-      background: var(--paper);
-      min-height: 560px;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:var(--paper);
     }
-    .hero-photo{
-      position:absolute; inset:0; z-index:0;
-      background-image: linear-gradient(rgba(250,249,247,.90),rgba(250,249,247,.90)), url("/assets/header.jpg");
-      background-position:center; background-size:cover; background-repeat:no-repeat;
-      opacity:.92;
-    }
-    .hero-topo{ position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
-    .hero-topo svg{
-      position:absolute; right:-8%; top:50%; transform: translateY(-50%);
-      width:min(680px,60%); height:auto;
-    }
-    .hero-topo .topo-lines{ fill:none; stroke: var(--ink); stroke-width:1; opacity:.08; }
-    .hero-topo .topo-lines.faint{ opacity:.05; }
-
-    .hero .container{ position:relative; z-index:1; }
+    .hero .container{position:relative;z-index:1}
     .hero-grid{
-      display:grid; grid-template-columns: 1fr;
-      gap: 32px;
-      padding: clamp(52px, 8vw, 108px) 0 clamp(44px, 6vw, 80px);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:34px;
+      padding:clamp(44px,7vw,88px) 0;
     }
+    .hero-copy{min-width:0}
     .hero h1{
-      font-size: clamp(2.5rem, 6.4vw, 5rem);
-      line-height: 0.99;
-      letter-spacing: -0.04em;
-      font-weight: 700;
-      margin: 22px 0 22px;
-      max-width: 15ch;
+      font-size:clamp(2.45rem,6vw,4.8rem);
+      line-height:.99;
+      letter-spacing:-.04em;
+      font-weight:700;
+      margin:22px 0;
+      max-width:15ch;
     }
-    .hero h1 .soft{ color: var(--muted); }
-    .hero .lead{ margin-bottom: 30px; }
+    .hero h1 .soft{color:var(--muted)}
+    .hero .lead{margin-bottom:30px}
 
-    .actions{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+    .hero-media{
+      min-height:300px;
+      border:1px solid var(--line-strong);
+      background-image:url("/assets/header.jpg");
+      background-position:center;
+      background-size:cover;
+      background-repeat:no-repeat;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(28,61,90,.12),rgba(250,249,247,.02));
+      pointer-events:none;
+    }
+    .hero-media-label{
+      position:absolute;
+      left:0;
+      bottom:0;
+      z-index:2;
+      background:rgba(255,255,255,.94);
+      border-top:1px solid var(--line);
+      border-right:1px solid var(--line);
+      padding:10px 13px;
+      font-family:var(--mono);
+      font-size:.66rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
     .button{
-      display:inline-flex; align-items:center; gap:9px;
-      text-decoration:none; font-weight:650; font-size:.92rem;
-      padding: 13px 22px;
-      border:1px solid var(--ink); background: var(--ink); color:#fff;
-      transition: background .15s ease, color .15s ease, transform .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      text-decoration:none;
+      font-weight:650;
+      font-size:.92rem;
+      padding:13px 22px;
+      border:1px solid var(--ink);
+      background:var(--ink);
+      color:#fff;
+      transition:background .15s ease,color .15s ease,transform .15s ease;
     }
-    .button:hover{ background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-    .button:focus-visible{ outline:none; box-shadow: var(--focus); }
-    .button.secondary{ background: transparent; color: var(--ink); border-color: var(--line-strong); }
-    .button.secondary:hover{ background: transparent; color: var(--accent); border-color: var(--accent); }
-    .button .arrow{ font-family: var(--mono); }
+    .button:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+    .button:focus-visible{outline:none;box-shadow:var(--focus)}
+    .button.secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+    .button.secondary:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
+    .button .arrow{font-family:var(--mono)}
 
-    /* Hero masthead data block — information as structure */
     .masthead{
-      font-family: var(--mono);
-      font-size: .74rem;
-      color: var(--muted);
-      display: grid;
-      gap: 10px;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-      max-width: 30rem;
+      font-family:var(--mono);
+      font-size:.74rem;
+      color:var(--muted);
+      display:grid;
+      gap:10px;
+      border-top:1px solid var(--line);
+      padding-top:20px;
+      max-width:30rem;
     }
-    .masthead div{ display:flex; justify-content: space-between; gap: 16px; }
-    .masthead dt{ text-transform: uppercase; letter-spacing: .12em; }
-    .masthead dd{ color: var(--ink); text-align: right; }
+    .masthead div{display:flex;justify-content:space-between;gap:16px}
+    .masthead dt{text-transform:uppercase;letter-spacing:.12em}
+    .masthead dd{color:var(--ink);text-align:right}
 
     /* Sections */
     section{ padding: clamp(56px, 8vw, 104px) 0; }
@@ -417,23 +443,6 @@
 
   <span id="top"></span>
   <section class="hero" role="banner">
-    <div class="hero-photo" aria-hidden="true"></div>
-    <div class="hero-topo" aria-hidden="true">
-      <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <g class="topo-lines">
-          <path d="M 500,300 C 500,180 620,110 760,110 C 940,110 1140,170 1140,320 C 1140,470 980,540 820,530 C 660,520 500,460 500,300 Z" />
-          <path d="M 560,300 C 560,205 665,150 780,150 C 930,150 1090,205 1090,325 C 1090,445 955,500 820,492 C 690,485 560,430 560,300 Z" />
-          <path d="M 620,300 C 620,230 705,190 800,190 C 920,190 1040,235 1040,330 C 1040,425 930,462 820,455 C 720,449 620,405 620,300 Z" />
-          <path d="M 680,302 C 680,255 745,228 815,228 C 905,228 990,262 990,335 C 990,405 905,428 820,422 C 745,417 680,388 680,302 Z" />
-          <path d="M 740,308 C 740,278 780,262 825,262 C 885,262 940,288 940,338 C 940,388 885,398 828,394 C 782,391 740,372 740,308 Z" />
-        </g>
-        <g class="topo-lines faint">
-          <path d="M 120,470 C 160,410 250,400 320,430 C 400,464 420,540 360,585" />
-          <path d="M 60,430 C 120,350 250,340 350,385 C 450,430 470,545 400,600" />
-          <path d="M 30,150 C 110,110 210,140 250,220" />
-        </g>
-      </svg>
-    </div>
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy">
@@ -446,6 +455,10 @@
             <a class="button" href="#services">Explore our work <span class="arrow" aria-hidden="true">→</span></a>
             <a class="button secondary" href="#contact">Start a conversation</a>
           </div>
+        </div>
+
+        <div class="hero-media" role="img" aria-label="Technology research and evaluation environment">
+          <div class="hero-media-label">Field research / evaluation</div>
         </div>
 
         <dl class="masthead">
